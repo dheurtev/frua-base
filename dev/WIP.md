@@ -4,6 +4,7 @@ git:clone
 git:downloadrepo
 git:downloadrepounzip
 
+fs:dir:wipe (test)
 fs:dirs:copy
 fs:dirs:move
 fs:dirs:perms

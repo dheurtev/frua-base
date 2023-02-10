@@ -12,15 +12,15 @@
 
 [![Project generated with PyScaffold](https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold)](https://pyscaffold.org/)
 
-# base
+# frua-base
 
-> frua.base is a personal Python library made by the author to follow DRY practices.
+> frua-base is a personal Python library made by the author to follow DRY practices.
 
 My goal is to provide a development framework based on the Python standard library.
 
 My aim is to be generic and tested.
 
-**frua.base shall not pull dependencies other than the standard library (except for packaging and documentation). It should not reimplement the standard library.**
+**frua-base shall not pull dependencies other than the standard library (except for packaging and documentation). It should not reimplement the standard library.**
 
 This library is free to use and reuse (MIT Licensed).
 
@@ -29,6 +29,9 @@ This library is free to use and reuse (MIT Licensed).
 The base package is *frua.base*:
 
 It contains:
+- *frua.base.archive* : Tools for archiving (zip, tar) 
+- *frua.base.data* : Tools for data manipulation (read, write)
+- *frua.base.fs* : Tools for filesystem manipulation
 - *frua.base.obj* : objects
 - *frua.base.log* : Logging objects and tools
 - *frua.base.time* : Time (datetime) helpers
