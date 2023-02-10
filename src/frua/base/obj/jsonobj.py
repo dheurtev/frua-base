@@ -52,37 +52,59 @@ class JSONObj(UUIDObj):
             raise TypeError('Cannot serialize object to JSON')
         return jsonstr
 
-    def json_deserialize(self, jsonstring):
+    def json_deserialize(self, jsonstring, copy=True):
         """
         Deserialize a JSON String into the object
 
+        Args:
+            jsonstring : JSON string representation of the object
+            copy : if True, copy to the __dict__ of the deserialized object
+
         Returns:
-            :dict: The __dict__ of the deserialized object
+            :obj: deserialized object
         """
         try:
-            json.loads(jsonstring, object_hook=lambda dico: JSONObj(**dico))    
+            obj = json.loads(jsonstring)    
         except TypeError:
             raise TypeError('Cannot deserialize object from JSON')
-        return self.__dict__
+        if copy:
+            self.__dict__.update(obj)
+            return self
+        else:
+            return obj
 
-    def tojson(self):
+    def tojson(self, obj=None):
         """
         Serialize object to JSON
+
+        If an object is provided, serialize it to JSON without copying to the container object (self)
+
+        Args:
+            obj : object to serialize (optional)
 
         Returns:
             :str: JSON string representation of the object
         """
-        return self.json_serialize()
+        if obj == None:
+            return self.json_serialize()
+        else:
+            s = JSONObj().from_dict(self.__dict__)
+            return json.dumps(obj)
 
-
-    def fromjson(self, jsonstring):
+    def fromjson(self, jsonstring, copy=True):
         """
         Deserialize a JSON String into the object
+
+        Args:      
+           copy : if True, copy to the __dict__ of the deserialized object
 
         Returns:
             :dict: The __dict__ of the deserialized object
         """
-        return self.json_deserialize(jsonstring)
+        if copy:
+            return self.json_deserialize(jsonstring, copy=copy)
+        else:
+            return json.loads(jsonstring)
     
     
     def json_serialize_to_file(self, filepath, create_dir=True, sort_keys=True, indent=4):
