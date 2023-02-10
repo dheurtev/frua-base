@@ -1,5 +1,6 @@
 # Changelog
 
 ## Version 0.1 (development)
-- log / logobj
+- log / logobj: extends logging logger
+
 

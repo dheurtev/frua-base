@@ -20,7 +20,7 @@ My goal is to provide a development framework based on the standard library.
 
 My aim is to be generic and tested.
 
-**frua.base shall not pull dependencies other than the standard library. It should not reimplement the standard library.**
+**frua.base shall not pull dependencies other than the standard library (except for packaging and documentation). It should not reimplement the standard library.**
 
 
 <!-- pyscaffold-notes -->
