@@ -4,6 +4,7 @@
 frua.base
 
 ## Existing
+frua.base.data
 frua.base.fs
 frua.base.log
 frua.base.obj
