@@ -41,7 +41,7 @@ class JSONObj(UUIDObj):
         super().__init__(*args, **kwargs)
         #other attributes
         #handle logger
-        if not hasattr(self, '_logger'):
+        if not hasattr(self, 'logger'):
             self._logger = logging.getLogger(__name__)
 
     def json_serialize(self, sort_keys=True, indent=4):
@@ -222,14 +222,3 @@ class JSONObj(UUIDObj):
     def __repr__(self):
         return self.json_serialize()
 
-if __name__ == '__main__':
-    d = JSONObj()
-    print(d.__dict__)
-    jsonstring = d.json_serialize()
-    print(jsonstring)
-    print(d.tojson())
-    print(d.fromjson(jsonstring))
-    print(d.json_serialize_to_file('/tmp/test.json'))
-    print(d.json_deserialize_from_file('/tmp/test.json'))
-    print(d.tojson_file('/tmp/test1.json'))
-    print(d.fromjson_file('/tmp/test1.json'))

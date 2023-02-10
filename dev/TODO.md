@@ -9,9 +9,9 @@ frua.base.fs
 frua.base.log
 frua.base.obj
 frua.base.time
+frua.base.archive
 
 ### Potential 
-frua.base.archive
 frua.base.bytes
 frua.base.compress
 frua.base.const

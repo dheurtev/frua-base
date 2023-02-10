@@ -25,6 +25,8 @@ class FileRW(object):
         Args:
             path (str): the file path
             content (list):The content to write in the file as a list of lines
+            args: positional arguments
+            kwargs: keyword arguments
         """
         super().__init__()
         #handle other attributes
@@ -34,7 +36,7 @@ class FileRW(object):
         self._args = args
         self.__dict__.update(kwargs)
         #handle logger
-        if not hasattr(self, '_logger'):
+        if not hasattr(self, 'logger'):
             self._logger = logging.getLogger(__name__)
 
     def write(self, content=None, mode='w+', dry=False):

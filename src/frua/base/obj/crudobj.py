@@ -129,7 +129,3 @@ class CRUDObj(DTObj):
             bool: True if the object is disabled
         """
         return not self.enabled
-
-if __name__ == '__main__':
-    d = CRUDObj()
-    print(d.__dict__)

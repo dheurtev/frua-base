@@ -49,7 +49,3 @@ class DTObj(UUIDObj):
         """
         self._dt = TimeHelp().utcnow()
         return self._dt
-
-if __name__ == '__main__':
-    d = DTObj()
-    print(d.__dict__)

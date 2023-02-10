@@ -46,8 +46,4 @@ class UUIDObj(DictObj):
 
     def __repr__(self):
         return self._id
-    
-if __name__ == '__main__':
-    d = UUIDObj()
-    print(d.__dict__)
-    
+
