@@ -14,9 +14,9 @@
 
 # base
 
-> frua.base is a personal library made by the author to follow DRY practices.
+> frua.base is a personal Python library made by the author to follow DRY practices.
 
-My goal is to provide a development framework based on the standard library.
+My goal is to provide a development framework based on the Python standard library.
 
 My aim is to be generic and tested.
 

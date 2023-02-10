@@ -1,6 +1,6 @@
 # frua.base
 
-frua.base is a personal library made by the author to follow DRY practices.
+frua.base is a personal Python library made by the author to follow DRY practices.
 
 
 ## Note
