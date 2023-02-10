@@ -6,6 +6,8 @@ Extends UUIDObj
 Uses:
 - os: https://docs.python.org/3/library/os.html
 - json: https://docs.python.org/3/library/json.html
+- logging: https://docs.python.org/3/library/logging.html
+- copy: https://docs.python.org/3/library/copy.html
 """
 __author__ = 'David HEURTEVENT'
 __copyright__ = 'David HEURTEVENT'
@@ -13,6 +15,9 @@ __license__ = 'MIT'
 
 import json
 import os
+import logging
+import copy
+
 
 from frua.base.obj.uidobj import UUIDObj
 
@@ -34,6 +39,10 @@ class JSONObj(UUIDObj):
             kwargs : optional arguments
         """
         super().__init__(*args, **kwargs)
+        #other attributes
+        #handle logger
+        if not hasattr(self, '_logger'):
+            self._logger = logging.getLogger(__name__)
 
     def json_serialize(self, sort_keys=True, indent=4):
         """
@@ -47,7 +56,10 @@ class JSONObj(UUIDObj):
             :str: JSON string representation of the object
         """
         try:
-            jsonstr = json.dumps(self, default=lambda o: o.__dict__, sort_keys=sort_keys, indent=indent)
+            cobj = copy.deepcopy(self)
+            if hasattr(self, '_logger'):
+                del(cobj.__dict__["_logger"])
+            jsonstr = json.dumps(cobj.__dict__, sort_keys=sort_keys, indent=indent)
         except TypeError:
             raise TypeError('Cannot serialize object to JSON')
         return jsonstr
@@ -132,7 +144,10 @@ class JSONObj(UUIDObj):
         #dump to the file
         try:
             with open(filepath, 'w') as file:
-                json.dump(self.__dict__, file, sort_keys=sort_keys, indent=indent)
+                cobj = copy.deepcopy(self)
+                if hasattr(self, '_logger'):
+                    del(cobj.__dict__["_logger"])
+                json.dump(cobj.__dict__, file, sort_keys=sort_keys, indent=indent)
                 file.close()
                 if hasattr(self, '_logger'):
                     self._logger.debug('JSON Object %s dumped to %s'%(self._id, filepath))
