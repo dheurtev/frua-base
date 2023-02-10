@@ -22,6 +22,7 @@ My aim is to be generic and tested.
 
 **frua.base shall not pull dependencies other than the standard library (except for packaging and documentation). It should not reimplement the standard library.**
 
+This library is free to use and reuse (MIT Licensed).
 
 <!-- pyscaffold-notes -->
 
