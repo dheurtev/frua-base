@@ -37,6 +37,13 @@ class DictObj(object):
             setattr(self, k, v)               
         return self
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return self.__dict__!= other.__dict__
+
+
 if __name__ == '__main__':
     d = DictObj(a=1, b=2, c=3)
     print(d.__dict__)
