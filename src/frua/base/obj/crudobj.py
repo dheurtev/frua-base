@@ -29,11 +29,9 @@ class CRUDObj(DTObj):
             kwargs : optional arguments
         """
         super().__init__(*args, **kwargs)
-        if not hasattr(self, 'enabled'):
-            self.enabled = False
-            self.enabled_at = TimeHelp.now()
-        if not hasattr(self, 'disabled'):
+        if not hasattr(self, 'deleted'):
             self.deleted = False
+        if not hasattr(self, 'created'):
             self.created_at = TimeHelp.now()
         if not hasattr(self, 'read_at'):
             self.read_at = None
@@ -41,12 +39,12 @@ class CRUDObj(DTObj):
             self.updated_at = None
         if not hasattr(self, 'deleted_at'):
             self.deleted_at = None
-    
-    def read(self):
-        """
-        Mark the object as read
-        """
-        self.read_at = TimeHelp().utcnow()
+        if not hasattr(self, 'enabled'):
+            self.enabled = True
+        if not hasattr(self, 'enabled_at'):
+            self.enabled_at = TimeHelp.now()
+        if not hasattr(self, 'disabled_at'):
+            self.disabled_at = None
     
     def create(self):
         """
@@ -54,6 +52,12 @@ class CRUDObj(DTObj):
         """
         self.created_at = TimeHelp().utcnow()
 
+    def read(self):
+        """
+        Mark the object as read
+        """
+        self.read_at = TimeHelp().utcnow()
+    
     def update(self):
         """
         Mark the object as updated
@@ -67,19 +71,26 @@ class CRUDObj(DTObj):
         self.deleted_at = TimeHelp().utcnow()
         self.deleted = True
     
-    def disable(self):
+    def undelete(self):
         """
-        Mark the object as disabled
+        Unmark the object as deleted
         """
-        self.enabled = False
-        self.disabled_at = TimeHelp().utcnow()
-    
+        self.deleted_at = None
+        self.deleted = False
+       
     def enable(self):
         """
         Mark the object as enabled
         """
         self.enabled = True
         self.enabled_at = TimeHelp().utcnow()
+
+    def disable(self):
+        """
+        Mark the object as disabled
+        """
+        self.enabled = False
+        self.disabled_at = TimeHelp().utcnow()
 
     def is_deleted(self):
         """

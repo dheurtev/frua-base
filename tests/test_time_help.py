@@ -60,3 +60,8 @@ def test_utcnow_ts():
 def test_utcnow_iso():
     assert TimeHelp().utcnow_iso() != None
     assert isinstance(TimeHelp().utcnow_iso(), str)
+
+def test_epoch():
+    assert TimeHelp().epoch() != None
+    assert TimeHelp().epoch() == datetime.datetime(1970, 1, 1, 0, 0)
+

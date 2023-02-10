@@ -99,8 +99,14 @@ class TimeHelp(object):
         Returns the current time in UTC as a string in ISO format
         """
         return str(datetime.datetime.utcnow().isoformat())
-   
 
+    @staticmethod
+    def epoch():
+        """
+        Returns the epoch time
+        """
+        return datetime.datetime.utcfromtimestamp(0)
+   
 if __name__ == '__main__':
     print(TimeHelp.now())
     print(TimeHelp.now_str())
@@ -114,5 +120,6 @@ if __name__ == '__main__':
     print(TimeHelp.utcnow_dt())
     print(TimeHelp.utcnow_ts())
     print(TimeHelp.utcnow_iso())
+    print(TimeHelp.epoch())
     
 
