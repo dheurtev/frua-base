@@ -1,5 +1,5 @@
 """
-Object identified with a unique identifier.
+Object identified with a unique identifier (UUID4).
 
 Uses:
 - uuid.uuid4
