@@ -18,11 +18,12 @@ def dictobj():
 
 def test_init(dictobj):
     assert isinstance(dictobj, DictObj)
+    assert '_args' in dictobj.__dict__
 
 def test_init_with_args():
     obj = DictObj(1, 2)
     assert isinstance(obj, DictObj)
-    assert obj.args != None
+    assert obj._args != None
 
 def test_init_with_kwargs():
     obj = DictObj(a=1, b=2)
@@ -33,7 +34,7 @@ def test_init_with_kwargs():
 def test_init_with_args_and_kwargs():
     obj = DictObj(1, 2, c=3)
     assert isinstance(obj, DictObj)
-    assert obj.args != None
+    assert obj._args != None
     assert obj.c == 3
 
 def test_from_dict(dictobj):

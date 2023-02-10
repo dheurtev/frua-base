@@ -1,6 +1,8 @@
 """
 Object identified with a unique identifier (UUID4).
 
+Extends DictObj
+
 Uses:
 - uuid.uuid4
 
@@ -15,6 +17,8 @@ from frua.base.obj.dictobj import DictObj
 class UUIDObj(DictObj):
     """
     Object identified with a unique identifier.
+
+    Extends DictObj
     """
     
     def __init__(self, *args, **kwargs):
@@ -44,7 +48,6 @@ class UUIDObj(DictObj):
         return self._id
     
 if __name__ == '__main__':
-    t = UUIDObj()
-    print(t.__dict__)
-    print(t.id)
-    print(t)
+    d = UUIDObj()
+    print(d.__dict__)
+    

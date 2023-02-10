@@ -18,3 +18,4 @@ def idobj():
 
 def test_id(idobj):
     assert idobj.id != None
+    assert '_id' in idobj.__dict__

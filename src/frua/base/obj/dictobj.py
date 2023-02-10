@@ -20,7 +20,7 @@ class DictObj(object):
             kwargs : optional arguments
         """
         super().__init__()
-        self.args = args
+        self._args = args
         self.__dict__.update(kwargs)
 
     def from_dict(self, d:dict) -> object:
@@ -36,3 +36,7 @@ class DictObj(object):
         for k, v in d.items():
             setattr(self, k, v)               
         return self
+
+if __name__ == '__main__':
+    d = DictObj(a=1, b=2, c=3)
+    print(d.__dict__)
