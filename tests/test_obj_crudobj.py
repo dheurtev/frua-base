@@ -22,6 +22,7 @@ def test_crudobj_init(crudobj):
     assert crudobj.enabled_at != None
     assert crudobj.created_at != None
     assert crudobj.read_at == None
-    assert crudobj.updated == None
+    assert crudobj.updated_at == None
     assert crudobj.deleted_at == None
+
 
