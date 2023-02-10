@@ -47,9 +47,9 @@ def test_zip_unzip_cycle(zipobj):
     #unzip
     zipobj.unzip(zipfilepath, dst)
     #perform the tests
-    assert os.path.exists(os.path.join(dst, 'test1.txt'))
-    assert os.path.exists(os.path.join(dst, 'test2'))
-    assert os.path.exists(os.path.join(dst, 'test2', 'test3.txt'))
+    assert os.path.exists(os.path.join(dst, 'testzip', 'test1.txt'))
+    assert os.path.exists(os.path.join(dst, 'testzip', 'test2'))
+    assert os.path.exists(os.path.join(dst, 'testzip', 'test2', 'test3.txt'))
     #Create a dirs object
     d = Dirs()
     #remove the output directory
