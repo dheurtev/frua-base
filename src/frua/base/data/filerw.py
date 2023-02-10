@@ -18,7 +18,7 @@ class FileRW(object):
     
     Basic file read/write with a dry run mode
     """
-    def __init__(self, path, content=None, *arg, **kwargs):
+    def __init__(self, path, content=None, *args, **kwargs):
         """
         Constructor
 
