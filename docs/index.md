@@ -2,6 +2,7 @@
 
 frua.base is a personal Python library made by the author to follow DRY practices.
 
+This library is free to use and reuse (MIT Licensed).
 
 ## Note
 
