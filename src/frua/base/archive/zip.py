@@ -16,6 +16,7 @@ __license__ = 'MIT'
 import os
 import logging
 import zipfile
+import argparse
 
 class Zip(object):
     """"
@@ -129,14 +130,13 @@ class Zip(object):
             return False
 
 if __name__ == '__main__':
-    import argparse
     #create the command line parser
     parser = argparse.ArgumentParser()
     parser = argparse.ArgumentParser(
                     prog = 'ZIP/UNZIP Utility',
                     description = 'ZIP/UNZIP a folder to/from a ZIP file',
                     epilog = 'MIT Licensed',)
-    parser.add_argument('command', help='zip or unzip')
+    parser.add_argument('command', help='zip or unzip', choices=['zip', 'unzip'])
     parser.add_argument('dir', help='path to unzip to or from')
     parser.add_argument('zip_file', help='path to zip file')
     parser.add_argument('-v', '--verbose', action='store_true', help='verbose output')
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
     zip = Zip()
-    if args.command == 'zip':
+    if args.command.lower() == 'zip':
         if not args.verbose:
             print("Starting to zip dir: %s to file %s"%(args.dir, args.zip_file))
         status = zip.zip(args.dir, args.zip_file)
@@ -156,7 +156,7 @@ if __name__ == '__main__':
         else:
             if not args.verbose:
                 print("Failed to zip dir: %s to file %s"%(args.dir, args.zip_file))
-    if args.command == 'unzip':
+    elif args.command.lower() == 'unzip':
         if not args.verbose:
             print("Starting to unzip file: %s to dir %s"%(args.zip_file, args.dir))
         status = zip.unzip(args.zip_file, args.dir)
@@ -166,4 +166,6 @@ if __name__ == '__main__':
         else:
             if not args.verbose:
                 print("Failed to unzip file: %s to dir %s"%(args.zip_file, args.dir))
+    else:
+        print("Command not recognized. Must be zip or unzip")
 
