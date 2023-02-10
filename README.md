@@ -24,6 +24,27 @@ My aim is to be generic and tested.
 
 This library is free to use and reuse (MIT Licensed).
 
+## Structure
+
+The base package is *frua.base*:
+
+It contains:
+- *frua.base.obj* : objects
+- *frua.base.log* : Logging objects and tools
+- *frua.base.time* : Time (datetime) helpers
+
+## Usage
+
+### To install locally
+
+`pip install -e .`
+
+### To use the library
+
+Example: 
+`import frua.base.obj as obj`
+
+
 <!-- pyscaffold-notes -->
 
 ## Note
