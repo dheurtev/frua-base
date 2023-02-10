@@ -14,14 +14,18 @@
 
 # base
 
-> Add a short description here!
+> frua.base is a personal library made by the author to follow DRY practices.
 
-A longer description of your project goes here...
+My goal is to provide a development framework based on the standard library.
+
+My aim is to be generic and tested.
+
+**frua.base shall not pull dependencies other than the standard library. It should not reimplement the standard library.**
 
 
 <!-- pyscaffold-notes -->
 
 ## Note
 
-This project has been set up using PyScaffold 4.4. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+This project has been set up using [PyScaffold](https://pyscaffold.org/) 4.4.
+In addition, this project has been set up using [pyscaffoldext-markdown](https://github.com/pyscaffold/pyscaffoldext-markdown)

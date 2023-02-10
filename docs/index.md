@@ -1,6 +1,6 @@
-# base
+# frua.base
 
-Add a short description here!
+frua.base is a personal library made by the author to follow DRY practices.
 
 
 ## Note
