@@ -70,12 +70,12 @@ class LogObj(logging.Logger):
         Add a file logger
 
         Args:
-        filename (str): The name of the file
-        level (int): The level of the logger
-        fmt (str): The format of the logger
-        datefmt (str): The date format of the logger
-        encoding (str): The encoding of the file
-        mode (str): The mode of the file
+            filename (str): The name of the file
+            level (int): The level of the logger
+            fmt (str): The format of the logger
+            datefmt (str): The date format of the logger
+            encoding (str): The encoding of the file
+            mode (str): The mode of the file
         """
         self._logger.setLevel(level)
         fh = logging.FileHandler(filename=filename, encoding=encoding, mode=mode)

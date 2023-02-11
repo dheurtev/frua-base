@@ -34,16 +34,40 @@ class UUIDObj(DictObj):
         self._id = str(uuid4())
     
     @property
-    def id(self):
-        return self._id
+    def id(self) -> str:
+        """
+        Getter for id
+
+        Returns:
+            str : id
+        """
+        return str(self._id)
 
     @id.setter
     def id(self, value:uuid4):
-        self._id = value
+        """
+        Setter for id
+
+        Args:
+            value : id
+        """
+        self._id = str(value)
 
     def __str__(self) -> str:
+        """
+        String representation
+
+        Returns:
+            str : id
+        """
         return str(self._id)
 
     def __repr__(self) -> str:
+        """
+        String representation
+
+        Returns:
+            str : id
+        """
         return str(self._id)
 

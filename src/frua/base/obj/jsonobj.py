@@ -51,11 +51,11 @@ class JSONObj(UUIDObj):
         Serialize object to JSON
 
         Args:
-            sort_keys : sort keys
-            indent : indentation of the json output
+            sort_keys (bool, optional): sort keys
+            indent (int, optional): indentation of the json output
 
         Returns:
-            :str: JSON string representation of the object
+            str: JSON string representation of the object
         """
         try:
             cobj = copy.deepcopy(self)
@@ -71,11 +71,11 @@ class JSONObj(UUIDObj):
         Deserialize a JSON String into the object
 
         Args:
-            jsonstring : JSON string representation of the object
-            copy : if True, copy to the __dict__ of the deserialized object
+            jsonstring (str) : JSON string representation of the object
+            copy (bool, optional)  : if True, copy to the __dict__ of the deserialized object
 
         Returns:
-            :obj: deserialized object
+            obj: deserialized object
         """
         try:
             obj = json.loads(jsonstring)    
@@ -94,10 +94,10 @@ class JSONObj(UUIDObj):
         If an object is provided, serialize it to JSON without copying to the container object (self)
 
         Args:
-            obj : object to serialize (optional)
+            obj (object, optional): object to serialize
 
         Returns:
-            :str: JSON string representation of the object
+            str: JSON string representation of the object
         """
         if obj == None:
             return self.json_serialize()
@@ -110,10 +110,11 @@ class JSONObj(UUIDObj):
         Deserialize a JSON String into the object
 
         Args:      
-           copy : if True, copy to the __dict__ of the deserialized object
+            jsonstring (str, optional): JSON string representation of the object
+            copy (bool, optional): if True, copy to the __dict__ of the deserialized object
 
         Returns:
-            :dict: The __dict__ of the deserialized object
+            dict: The __dict__ of the deserialized object
         """
         if copy:
             return self.json_deserialize(jsonstring, copy=copy)
@@ -126,13 +127,13 @@ class JSONObj(UUIDObj):
         Serialize object to JSON and write it to a file
 
         Args:
-            filepath : filepath to write to
-            create_dir : create directory if it does not exist
-            sort_keys : sort keys
-            indent : indentation of the json output
+            filepath (str): filepath to write to
+            create_dir (bool, optional): create directory if it does not exist
+            sort_keys (bool, optional): sort keys
+            indent (int, optional): indentation of the json output
 
         Returns:
-            :str: filepath
+            str: filepath
         """
         #check if directory exists, else create it
         if create_dir and not os.path.exists(os.path.dirname(filepath)):
@@ -166,10 +167,10 @@ class JSONObj(UUIDObj):
         Deserialize a JSON File into the object
 
         Args:
-            filepath : filepath to read from
+            filepath (str): filepath to read from
 
         Returns:
-            :object: JSON Object representation
+            object: JSON Object representation
         """
         #check if file exists
         if not os.path.exists(filepath):
@@ -196,13 +197,13 @@ class JSONObj(UUIDObj):
         Serialize object to JSON and write it to a file
 
         Args:
-            filepath : filepath to write to
-            create_dir : create directory if it does not exist
-            sort_keys : sort keys
-            indent : indentation of the json output
+            filepath (str): filepath to write to
+            create_dir (bool, optional) : create directory if it does not exist
+            sort_keys (bool, optional) : sort keys
+            indent (int, optional) : indentation of the json output
 
         Returns:
-            :str: filepath
+            str: filepath
         """
         return self.json_serialize_to_file(filepath, create_dir, sort_keys, indent)
 
@@ -211,10 +212,10 @@ class JSONObj(UUIDObj):
         Deserialize a JSON File into the object
 
         Args:
-            filepath : filepath to read from
+            filepath(str): filepath to read from
 
         Returns:
-           :object: JSON Object representation
+           object: JSON Object representation
         """
         return self.json_deserialize_from_file(filepath)
 

@@ -40,15 +40,30 @@ class DTObj(UUIDObj):
 
     @property
     def dt(self) -> datetime.datetime:
+        """
+        Return the datetime
+
+        Returns:
+            datetime.datetime : datetime
+        """
         return self._dt
 
     @dt.setter
     def dt(self, value:datetime.datetime) -> None:
+        """
+        Set the datetime
+
+        Args:
+            value (datetime.datetime) : datetime
+        """
         self._dt = value
     
     def reset_dt(self) -> datetime.datetime:
         """
         Reset the datetime to the current datetime and return it
+
+        Returns:
+            datetime.datetime : datetime
         """
         self._dt = TimeHelp().utcnow()
         return self._dt

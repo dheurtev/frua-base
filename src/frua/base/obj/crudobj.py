@@ -98,7 +98,6 @@ class CRUDObj(DTObj):
 
         Returns:
             bool: True if the object is deleted
-
         """
         return self.deleted
 
@@ -117,7 +116,6 @@ class CRUDObj(DTObj):
 
         Returns:
             bool: True if the object is enabled
-
         """
         return self.enabled
     

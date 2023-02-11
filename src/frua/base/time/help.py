@@ -20,6 +20,9 @@ class TimeHelp(object):
     def now() -> datetime.datetime:
         """
         Returns the current time
+
+        Returns:
+            datetime.datetime: the current time
         """
         return datetime.datetime.now()
 
@@ -27,6 +30,9 @@ class TimeHelp(object):
     def now_str() -> str:
         """
         Returns the current time as a string
+
+        Returns:
+            str: the current time as a string
         """
         return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S %Z")
 
@@ -34,6 +40,9 @@ class TimeHelp(object):
     def now_us_str() -> str:
         """
         Returns the current time as a str in US format
+
+        Returns:
+            str: the current time as a str in US format
         """
         return datetime.datetime.now().strftime("%m-%d-%Y %I:%M:%S %p %Z")
 
@@ -41,6 +50,9 @@ class TimeHelp(object):
     def now_eu_str() -> str:
         """
         Returns the current time as a str in Europe format
+
+        Returns:
+            str: the current time as a str in Europe format
         """
         return datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S %Z")
 
@@ -48,6 +60,9 @@ class TimeHelp(object):
     def now_dt() -> datetime.datetime:
         """
         Returns the current time as a datetime
+
+        Returns:
+            datetime.datetime: the current time as a datetime
         """
         return datetime.datetime.now()
 
@@ -55,6 +70,9 @@ class TimeHelp(object):
     def now_ts() -> float:
         """
         Returns the current time as a timestamp
+
+        Returns:
+            float: the current time as a timestamp
         """
         return datetime.datetime.now().timestamp()
 
@@ -62,6 +80,9 @@ class TimeHelp(object):
     def now_iso() -> str:
         """
         Returns the current time as a str in ISO format
+
+        Returns:
+            str: the current time as a str in ISO format
         """
         return str(datetime.datetime.now().isoformat())
 
@@ -69,6 +90,9 @@ class TimeHelp(object):
     def utcnow() -> datetime.datetime:
         """
         Returns the current time in UTC
+
+        Returns:
+            datetime.datetime: the current time in UTC
         """
         return datetime.datetime.utcnow()
     
@@ -76,6 +100,9 @@ class TimeHelp(object):
     def utcnow_str() -> str:
         """
         Returns the current time in UTC as a string
+
+        Returns:
+            str: the current time in UTC as a string
         """
         return datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
     
@@ -83,6 +110,9 @@ class TimeHelp(object):
     def utcnow_dt() -> datetime.datetime:
         """
         Returns the current time in UTC as a datetime
+
+        Returns:
+            datetime.datetime: the current time in UTC as a datetime
         """
         return datetime.datetime.utcnow()
     
@@ -90,6 +120,9 @@ class TimeHelp(object):
     def utcnow_ts() -> float:
         """
         Returns the current time in UTC as a timestamp
+
+        Returns:
+            float: the current time in UTC as a timestamp
         """
         return datetime.datetime.utcnow().timestamp()
 
@@ -97,6 +130,9 @@ class TimeHelp(object):
     def utcnow_iso() -> str:
         """
         Returns the current time in UTC as a string in ISO format
+
+        Returns:
+            str: the current time in UTC as a string in ISO format
         """
         return str(datetime.datetime.utcnow().isoformat())
 
@@ -104,6 +140,9 @@ class TimeHelp(object):
     def epoch() -> datetime.datetime:
         """
         Returns the epoch time
+
+        Returns:
+            datetime.datetime: the epoch time
         """
         return datetime.datetime.utcfromtimestamp(0)
    

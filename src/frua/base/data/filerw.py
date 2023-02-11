@@ -49,8 +49,7 @@ class FileRW(object):
             dry (bool): flag indicating a dry run
 
         Returns:
-           :int:Status: 0 is OK, 1 is dry run, 2 is error
-
+           int:Status: 0 is OK, 1 is dry run, 2 is error
         """
         #set content
         if content:
@@ -83,8 +82,7 @@ class FileRW(object):
             dry (bool): flag indicating a dry run
 
         Returns:
-           :int:Status: 0 is OK, 1 is dry run, 2 is error
-
+           int:Status: 0 is OK, 1 is dry run, 2 is error
         """
         #dry run
         if dry:

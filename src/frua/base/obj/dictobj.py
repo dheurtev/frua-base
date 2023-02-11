@@ -28,18 +28,36 @@ class DictObj(object):
         Load object from dict
 
         Args:
-            d : dict
+            d (dict) : dict
 
         Returns:
-        self
+            self
         """
         for k, v in d.items():
             setattr(self, k, v)               
         return self
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
+        """
+        Check equality
+
+        Args:
+            other (object) : object
+
+        Returns:
+            bool
+        """
         return self.__dict__ == other.__dict__
 
-    def __ne__(self, other):
+    def __ne__(self, other) -> bool:
+        """
+        Check inequality
+
+        Args:
+            other (object) : object
+
+        Returns:
+            bool
+        """
         return self.__dict__!= other.__dict__
 
