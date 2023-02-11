@@ -5,7 +5,7 @@
 ## Version 0.0.1 (development)
 - archive/tar : to tar/untar a folder
 - archive/zip : to zip/unzip a folder
-- cmd/cmd : ro run command lines and bash scripts
+- cmd/cmd : ro run command lines and bash/python scripts
 - data/filerw : an object for basic read/write operations on a file
 - log/logobj: extends logging logger
 - obj/crudobj : an object for CRUD operations + enable/disable

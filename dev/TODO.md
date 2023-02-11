@@ -5,6 +5,7 @@ frua.base
 
 ## Existing
 frua.base.archive
+frua.base.cmd
 frua.base.data
 frua.base.fs
 frua.base.log
