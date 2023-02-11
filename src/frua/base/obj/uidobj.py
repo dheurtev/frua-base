@@ -21,7 +21,7 @@ class UUIDObj(DictObj):
     Extends DictObj
     """
     
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -38,12 +38,12 @@ class UUIDObj(DictObj):
         return self._id
 
     @id.setter
-    def id(self, value):
+    def id(self, value:uuid4):
         self._id = value
 
-    def __str__(self):
-        return self._id
+    def __str__(self) -> str:
+        return str(self._id)
 
-    def __repr__(self):
-        return self._id
+    def __repr__(self) -> str:
+        return str(self._id)
 

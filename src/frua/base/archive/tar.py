@@ -23,7 +23,7 @@ class Tar:
     TAR file manipulation (tar/untar)
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -40,7 +40,7 @@ class Tar:
             self._logger = logging.getLogger(__name__)
     
     
-    def tar(self, dir, tar_file, fmt=None):
+    def tar(self, dir:str, tar_file:str, fmt:str=None) -> bool:
         """
         tar a directory
 
@@ -79,7 +79,7 @@ class Tar:
                 self._logger.error(e)
             return False
     
-    def untar(self, tar_file, dir, fmt=None):
+    def untar(self, tar_file:str, dir:str, fmt:str=None) -> bool:
         """
         untar a directory
 

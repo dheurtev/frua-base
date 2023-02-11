@@ -20,7 +20,7 @@ class CRUDObj(DTObj):
     Extends DTObj
     """
     
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -46,53 +46,53 @@ class CRUDObj(DTObj):
         if not hasattr(self, 'disabled_at'):
             self.disabled_at = None
     
-    def create(self):
+    def create(self) -> None:
         """
         Mark the object as created
         """
         self.created_at = TimeHelp().utcnow()
 
-    def read(self):
+    def read(self) -> None:
         """
         Mark the object as read
         """
         self.read_at = TimeHelp().utcnow()
     
-    def update(self):
+    def update(self) -> None:
         """
         Mark the object as updated
         """
         self.updated_at = TimeHelp().utcnow()
     
-    def delete(self):
+    def delete(self) -> None:
         """
         Mark the object as deleted
         """
         self.deleted_at = TimeHelp().utcnow()
         self.deleted = True
     
-    def undelete(self):
+    def undelete(self) -> None:
         """
         Unmark the object as deleted
         """
         self.deleted_at = None
         self.deleted = False
        
-    def enable(self):
+    def enable(self) -> None:
         """
         Mark the object as enabled
         """
         self.enabled = True
         self.enabled_at = TimeHelp().utcnow()
 
-    def disable(self):
+    def disable(self) -> None:
         """
         Mark the object as disabled
         """
         self.enabled = False
         self.disabled_at = TimeHelp().utcnow()
 
-    def is_deleted(self):
+    def is_deleted(self) -> bool:
         """
         Check if the object is deleted
 
@@ -102,7 +102,7 @@ class CRUDObj(DTObj):
         """
         return self.deleted
 
-    def is_active(self): 
+    def is_active(self) -> bool: 
         """
         Check if the object is active
 
@@ -111,7 +111,7 @@ class CRUDObj(DTObj):
         """
         return not self.deleted
 
-    def is_enabled(self):
+    def is_enabled(self) -> bool:
         """
         Check if the object is enabled
 
@@ -121,7 +121,7 @@ class CRUDObj(DTObj):
         """
         return self.enabled
     
-    def is_disabled(self):
+    def is_disabled(self) -> bool:
         """
         Check if the object is disabled
 

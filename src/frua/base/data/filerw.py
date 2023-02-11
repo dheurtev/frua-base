@@ -18,7 +18,7 @@ class FileRW(object):
     
     Basic file read/write with a dry run mode
     """
-    def __init__(self, path, content=None, *args, **kwargs):
+    def __init__(self, path, content=None, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -39,7 +39,7 @@ class FileRW(object):
         if not hasattr(self, 'logger'):
             self._logger = logging.getLogger(__name__)
 
-    def write(self, content=None, mode='w+', dry=False):
+    def write(self, content:list=None, mode:str='w+', dry:bool=False) -> int:
         """
         Write the content to a file, except in dry run mode
 
@@ -74,7 +74,7 @@ class FileRW(object):
                 self._logger.error(e)
             return 2
 
-    def read(self, mode='r+', dry=False):
+    def read(self, mode:str='r+', dry:bool=False) -> int:
         """
         Read the content from a file, except in dry run mode
 

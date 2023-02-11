@@ -11,7 +11,7 @@ class DictObj(object):
     Object loaded from dict
     """
     
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Constructor
 

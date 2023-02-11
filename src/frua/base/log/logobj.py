@@ -19,7 +19,7 @@ class LogObj(logging.Logger):
     An object extending logging.Logger
     """
 
-    def __init__(self, logger:str=None, *args, **kwargs):
+    def __init__(self, logger:str=None, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -35,7 +35,7 @@ class LogObj(logging.Logger):
         self.logger = self.load_logger(logger)
     
     def add_console_logger(self, level:int=logging.DEBUG, \
-        fmt:str='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt:str='%Y-%m-%d %H:%M:%S'):
+        fmt:str='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt:str='%Y-%m-%d %H:%M:%S') -> None:
         """
         Add a console logger
 
@@ -54,7 +54,7 @@ class LogObj(logging.Logger):
         # add ch to logger
         self._logger.addHandler(ch)
 
-    def add_basic_console_logger(self, level:int=logging.INFO):
+    def add_basic_console_logger(self, level:int=logging.INFO) -> None:
         """
         Add a basic console logger
 
@@ -63,9 +63,9 @@ class LogObj(logging.Logger):
         """
         self.add_console_logger(level=level, fmt='%(message)s')
 
-    def add_file_logger(self, filename='example.log', level=logging.DEBUG, \
-        fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S', \
-            encoding='utf-8', mode='w'):
+    def add_file_logger(self, filename:str='example.log', level:int=logging.DEBUG, \
+        fmt:str='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt:str='%Y-%m-%d %H:%M:%S', \
+            encoding:str='utf-8', mode:str='w') -> None:
         """
         Add a file logger
 
@@ -87,7 +87,7 @@ class LogObj(logging.Logger):
         # add ch to logger
         self._logger.addHandler(fh)
 
-    def load_logger(self, logger:str=None):
+    def load_logger(self, logger:str=None) -> logging.Logger:
         """
         Load a logger by name
 
@@ -103,7 +103,7 @@ class LogObj(logging.Logger):
             self._logger = logging.getLogger(__name__)
         return self._logger
     
-    def load_logger_from_dict(self, logger_dict:dict):
+    def load_logger_from_dict(self, logger_dict:dict) -> logging.Logger:
         """
         Load a logger from a dictionary
 
@@ -116,7 +116,7 @@ class LogObj(logging.Logger):
         logging.config.dictConfig(logger_dict)
         return self._logger
 
-    def disable(self, level=logging.INFO):
+    def disable(self, level:int=logging.INFO) -> None:
         """
         Disable the logger
 
@@ -126,7 +126,7 @@ class LogObj(logging.Logger):
         self._logger.disabled = True
         self._logger.setLevel(level)
 
-    def enable(self, level=logging.INFO):
+    def enable(self, level=logging.INFO) -> None:
         """
         Enable the logger
 
@@ -136,7 +136,7 @@ class LogObj(logging.Logger):
         self._logger.disabled = False
         self._logger.setLevel(level)
     
-    def is_disabled(self):
+    def is_disabled(self) -> bool:
         """
         Check if the logger is disabled
 
@@ -145,7 +145,7 @@ class LogObj(logging.Logger):
         """
         return self._logger.disabled
     
-    def is_enabled(self):
+    def is_enabled(self) -> bool:
         """
         Check if the logger is enabled
 

@@ -17,91 +17,91 @@ class TimeHelp(object):
     """
 
     @staticmethod
-    def now():
+    def now() -> datetime.datetime:
         """
         Returns the current time
         """
         return datetime.datetime.now()
 
     @staticmethod
-    def now_str():
+    def now_str() -> str:
         """
         Returns the current time as a string
         """
         return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S %Z")
 
     @staticmethod
-    def now_us_str():
+    def now_us_str() -> str:
         """
         Returns the current time as a str in US format
         """
         return datetime.datetime.now().strftime("%m-%d-%Y %I:%M:%S %p %Z")
 
     @staticmethod
-    def now_eu_str():
+    def now_eu_str() -> str:
         """
         Returns the current time as a str in Europe format
         """
         return datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S %Z")
 
     @staticmethod
-    def now_dt():
+    def now_dt() -> datetime.datetime:
         """
         Returns the current time as a datetime
         """
         return datetime.datetime.now()
 
     @staticmethod
-    def now_ts():
+    def now_ts() -> float:
         """
         Returns the current time as a timestamp
         """
         return datetime.datetime.now().timestamp()
 
     @staticmethod
-    def now_iso():
+    def now_iso() -> str:
         """
         Returns the current time as a str in ISO format
         """
         return str(datetime.datetime.now().isoformat())
 
     @staticmethod
-    def utcnow():
+    def utcnow() -> datetime.datetime:
         """
         Returns the current time in UTC
         """
         return datetime.datetime.utcnow()
     
     @staticmethod
-    def utcnow_str():
+    def utcnow_str() -> str:
         """
         Returns the current time in UTC as a string
         """
         return datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
     
     @staticmethod
-    def utcnow_dt():
+    def utcnow_dt() -> datetime.datetime:
         """
         Returns the current time in UTC as a datetime
         """
         return datetime.datetime.utcnow()
     
     @staticmethod
-    def utcnow_ts():
+    def utcnow_ts() -> float:
         """
         Returns the current time in UTC as a timestamp
         """
         return datetime.datetime.utcnow().timestamp()
 
     @staticmethod
-    def utcnow_iso():
+    def utcnow_iso() -> str:
         """
         Returns the current time in UTC as a string in ISO format
         """
         return str(datetime.datetime.utcnow().isoformat())
 
     @staticmethod
-    def epoch():
+    def epoch() -> datetime.datetime:
         """
         Returns the epoch time
         """

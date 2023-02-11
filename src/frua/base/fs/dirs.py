@@ -16,7 +16,7 @@ class Dirs(object):
     """"
     Directory manipulation 
     """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -29,10 +29,10 @@ class Dirs(object):
         self._args = args
         self.__dict__.update(kwargs)
         #handle logger
-        if not hasattr(self, '_logger'):
+        if not hasattr(self, 'logger'):
             self._logger = logging.getLogger(__name__)
 
-    def wipedir(self, dir, wipe=False):
+    def wipedir(self, dir:str, wipe:bool=False) -> None:
         """
         Wipes a directory (equivalent rm -rf dir)
 

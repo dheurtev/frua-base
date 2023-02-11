@@ -22,7 +22,7 @@ class Zip(object):
     """"
     ZIP file manipulation (zip/unzip)
     """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -39,7 +39,7 @@ class Zip(object):
             self._logger = logging.getLogger(__name__)
 
 
-    def _zipdir(self, path, ziph):
+    def _zipdir(self, path:str, ziph:zipfile.ZipFile) -> None:
         """
         ziph is zipfile handle. It supports compression.
         
@@ -60,7 +60,7 @@ class Zip(object):
             if hasattr(self, '_logger'):
                 self._logger.debug("Done adding directory %s", os.path.join(root))
             
-    def zip(self, dir, zip_file, compression_algorithm=zipfile.ZIP_DEFLATED):
+    def zip(self, dir:str, zip_file:str, compression_algorithm:int=zipfile.ZIP_DEFLATED) -> bool:
         """
         zips a directory
 
@@ -95,7 +95,7 @@ class Zip(object):
                 self._logger.error(e)
             return False
 
-    def unzip(self, zip_file, dir):
+    def unzip(self, zip_file:str, dir:str) -> bool:
         """
         unzips a zip file
 

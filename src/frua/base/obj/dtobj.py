@@ -5,13 +5,16 @@ By default, it is set to the current time in utc time.
 
 Extends UUIDObj
 
+Uses:
+- datetime: https://docs.python.org/3/library/datetime.html
 """
 __author__ = 'David HEURTEVENT'
 __copyright__ = 'David HEURTEVENT'
 __license__ = 'MIT'
 
-from frua.base.time.help import TimeHelp
+import datetime
 
+from frua.base.time.help import TimeHelp
 from frua.base.obj.uidobj import UUIDObj
 
 class DTObj(UUIDObj):
@@ -24,7 +27,7 @@ class DTObj(UUIDObj):
     Extends UUIDObj
     """
     
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -36,14 +39,14 @@ class DTObj(UUIDObj):
         self._dt = TimeHelp().utcnow()
 
     @property
-    def dt(self):
+    def dt(self) -> datetime.datetime:
         return self._dt
 
     @dt.setter
-    def dt(self, value):
+    def dt(self, value:datetime.datetime) -> None:
         self._dt = value
     
-    def reset_dt(self):
+    def reset_dt(self) -> datetime.datetime:
         """
         Reset the datetime to the current datetime and return it
         """
