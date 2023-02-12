@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 
 from frua.base.archive.tar import Tar
-from frua.base.fs.dirs import Dirs
+from frua.base.fs.dir import Dir
 
 @pytest.fixture
 def tarobj():
@@ -52,13 +52,13 @@ def test_tar_untar_cycle(tarobj):
     assert os.path.exists(os.path.join(dst, 'tmp', 'testtar', 'test2'))
     assert os.path.exists(os.path.join(dst, 'tmp','testtar', 'test2', 'test3.txt'))
     #Create a dirs object
-    d = Dirs()
+    d = Dir()
     #remove the output directory
     if os.path.exists(dst):
-        d.wipedir(dst)
+        d.wipe(dst)
     #remove the temporary directory
     if os.path.exists(path1):
-        d.wipedir(path1)
+        d.wipe(path1)
     #remove the tarfile
     if os.path.exists(tarfilepath):
         os.remove(tarfilepath)
@@ -94,13 +94,13 @@ def test_tar_untar_cycle_gz(tarobj):
     assert os.path.exists(os.path.join(dst, 'tmp', 'testtar', 'test2'))
     assert os.path.exists(os.path.join(dst, 'tmp','testtar', 'test2', 'test3.txt'))
     #Create a dirs object
-    d = Dirs()
+    d = Dir()
     #remove the output directory
     if os.path.exists(dst):
-        d.wipedir(dst)
+        d.wipe(dst)
     #remove the temporary directory
     if os.path.exists(path1):
-        d.wipedir(path1)
+        d.wipe(path1)
     #remove the tarfile
     if os.path.exists(tarfilepath):
         os.remove(tarfilepath)

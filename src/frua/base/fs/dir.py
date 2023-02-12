@@ -12,7 +12,7 @@ __license__ = 'MIT'
 import os
 import logging
 
-class Dirs(object):
+class Dir(object):
     """"
     Directory manipulation 
     """
@@ -32,7 +32,7 @@ class Dirs(object):
         if not hasattr(self, 'logger'):
             self._logger = logging.getLogger(__name__)
 
-    def wipedir(self, dir:str, wipe:bool=False) -> None:
+    def wipe(self, dir:str, wipe:bool=False) -> None:
         """
         Wipes a directory (equivalent rm -rf dir)
 
@@ -65,7 +65,7 @@ class Dirs(object):
                     path = dir + os.sep + file
                     if os.path.isdir(path):
                         #wipe sub-directory
-                        self.wipedir(path)
+                        self.wipe(path)
                         if hasattr(self, '_logger'):
                             self._logger.debug("wiped dir: %s", path)
                     else:

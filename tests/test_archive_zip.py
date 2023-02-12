@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 
 from frua.base.archive.zip import Zip
-from frua.base.fs.dirs import Dirs
+from frua.base.fs.dir import Dir
 
 @pytest.fixture
 def zipobj():
@@ -51,13 +51,13 @@ def test_zip_unzip_cycle(zipobj):
     assert os.path.exists(os.path.join(dst, 'testzip', 'test2'))
     assert os.path.exists(os.path.join(dst, 'testzip', 'test2', 'test3.txt'))
     #Create a dirs object
-    d = Dirs()
+    d = Dir()
     #remove the output directory
     if os.path.exists(dst):
-        d.wipedir(dst)
+        d.wipe(dst)
     #remove the temporary directory
     if os.path.exists(path1):
-        d.wipedir(path1)
+        d.wipe(path1)
     #remove the zipfile
     if os.path.exists(zipfilepath):
         os.remove(zipfilepath)
