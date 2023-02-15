@@ -4,16 +4,16 @@
 frua.base
 
 ## Existing
-frua.base.archive
-frua.base.cmd
-frua.base.const
-frua.base.data
+frua.base.archive.*
+frua.base.cmd.cmd
+frua.base.const.perms
+frua.base.data.filerw
 frua.base.db.sqlite
-frua.base.fs
-frua.base.log
-frua.base.obj
-frua.base.time
-frua.base.fs
+frua.base.fs.*
+frua.base.http.getdownloader
+frua.base.log.logobj
+frua.base.obj.*
+frua.base.time.help
 
 ### Potential 
 frua.base.bytes
@@ -39,7 +39,6 @@ frua.base.gui
 frua.base.hardware
 frua.base.hash
 frua.base.html
-frua.base.http
 frua.base.image
 frua.base.intl
 frua.base.io

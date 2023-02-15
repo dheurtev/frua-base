@@ -1,7 +1,8 @@
 """
 HTTP get downloader
 
-Download files from the internet
+Download web pages or files from the internet with a get download method and save the files to disk (similar to wget) 
+
 
 Uses:
 - os: https://docs.python.org/3/library/os.html

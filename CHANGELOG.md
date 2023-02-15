@@ -13,6 +13,7 @@
 - fs/groups : get the group name by gid or GID for a group name
 - fs/pathperms: Path permission helpers
 - fs/users: get the user name by uid or UID for a user name
+- http/getdownloader: download web pages or files from the internet with a get download method and save the files to disk (similar to wget) 
 - log/logobj: extends logging logger
 - obj/crudobj : an object for CRUD operations + enable/disable
 - obj/dictobj: an object that can be loaded from a dict
