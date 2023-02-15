@@ -40,9 +40,3 @@ class Users(object):
             str: user name
         """
         return pwd.getpwuid(uid).pw_name
-
-if __name__ == '__main__':
-    users = Users()
-    uid = users.uid('root')
-    print(uid)
-    print(users.user(uid))
