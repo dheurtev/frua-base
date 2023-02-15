@@ -11,7 +11,7 @@ frua.base.fs
 frua.base.log
 frua.base.obj
 frua.base.time
-
+frua.base.fs
 
 ### Potential 
 frua.base.bytes
@@ -36,9 +36,6 @@ frua.base.fmt.mimes
 frua.base.fmt.rss
 frua.base.fmt.xml
 frua.base.fmt.xml
-frua.base.fs
-frua.base.fs.dir
-frua.base.fs.files
 frua.base.gui
 frua.base.hardware
 frua.base.hash

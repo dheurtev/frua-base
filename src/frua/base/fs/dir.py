@@ -1,5 +1,5 @@
 """
-Directory manipulation 
+Directory manipulation with logger
 
 Uses:
 - os: https://docs.python.org/3/library/os.html

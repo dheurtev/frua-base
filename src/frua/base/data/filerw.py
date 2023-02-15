@@ -9,7 +9,6 @@ __author__ = 'David HEURTEVENT'
 __copyright__ = 'David HEURTEVENT'
 __license__ = 'MIT'
 
-import os
 import logging
 
 class FileRW(object):
@@ -67,7 +66,7 @@ class FileRW(object):
             if hasattr(self, '_logger'):
                 self._logger.debug('Content %s written to %s'%(self.content, self.path))
             return 0
-        except Error as e:
+        except IOError as e:
             if hasattr(self, '_logger'):
                 self._logger.error('Could not write to the file %s'%(self.path))
                 self._logger.error(e)
@@ -99,7 +98,7 @@ class FileRW(object):
                 self._logger.debug('File content %s read from %s'%(content, self.path))
             self.content = content
             return 0
-        except Error as e:
+        except IOError as e:
             if hasattr(self, '_logger'):
                 self._logger.error('Could not read the file %s'%(self.path))
                 self._logger.error(e)

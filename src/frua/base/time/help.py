@@ -1,5 +1,5 @@
 """
-Time helpers functions
+Time helpers Shortcuts
 
 Uses:
 - datetime: https://docs.python.org/3/library/datetime.html
