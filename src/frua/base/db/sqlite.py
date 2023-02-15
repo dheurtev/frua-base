@@ -15,7 +15,7 @@ from sqlite3 import Error
 
 class Sqlite(object):
 
-    def __init__(self, db_file:str='', logger:logging.logger=None, *args, **kwargs) -> None:
+    def __init__(self, db_file:str='', logger:logging.Logger=None, *args, **kwargs) -> None:
         """
         Constructor
 
