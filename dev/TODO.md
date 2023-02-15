@@ -6,6 +6,7 @@ frua.base
 ## Existing
 frua.base.archive
 frua.base.cmd
+frua.base.const
 frua.base.data
 frua.base.fs
 frua.base.log
@@ -16,7 +17,6 @@ frua.base.fs
 ### Potential 
 frua.base.bytes
 frua.base.compress
-frua.base.const
 frua.base.container
 frua.base.container.docker
 frua.base.crypto
