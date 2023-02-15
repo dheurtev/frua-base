@@ -32,6 +32,8 @@ class PathPerms(object):
         """
         if path != None:
             self._path = path
+        else:
+            self._path = None
 
     @property
     def path(self) -> str:
@@ -39,9 +41,12 @@ class PathPerms(object):
         Returns path
 
         Returns:
-            str: path (file or directory)
+            str: path (file or directory) else None
         """
-        return os.path.normpath(self._path)
+        if self._path!= None:
+           return os.path.normpath(self._path)
+        else:
+            return None
 
     @path.setter
     def path(self, value:str) -> None:
@@ -71,8 +76,9 @@ class PathPerms(object):
         Returns:
             str: group gid of the file
         """
-        return os.getgid(self._path)
+        return os.stat(self._path).st_gid
     
+    @property
     def stats(self) -> dict:
         """
         Returns the file statistics
@@ -110,32 +116,34 @@ class PathPerms(object):
         else:
             return oct_rep
 
-    def owner(self) -> str:
+    @property
+    def owner_name(self) -> str:
         """
         Returns the owner name of the Path
 
         Returns:
             str: owner of the file
         """
-        return pwd.getpwuid(self.uid()).pw_name
+        return str(pwd.getpwuid(self.uid).pw_name)
 
-    def group(self) -> str:
+    @property
+    def group_name(self) -> str:
         """
         Returns the group name of the Path
         Returns:
             str: group of the file
         """
-        return grp.getgrgid(self.gid()).gr_name
+        return str(grp.getgrgid(self.gid).gr_name)
 
-    def others(self, rep='str') -> str:
+    def others_perms(self, rep='str') -> str:
         """
-        Return the others permission number
+        Return the others permissions as a string or as an octet number
 
         Args:
             rep (str, optional): representation of the permissions. Defaults to'str'. can be 'oct' or 'str'.
 
         Returns:
-            str: others permission number
+            str: others permissions
         """
         mode =str(self.perms('oct'))
         res = mode[-1]
@@ -145,15 +153,15 @@ class PathPerms(object):
         else:
             return res
 
-    def group(self, rep='str') -> str:
+    def group_perms(self, rep='str') -> str:
         """
-        Return the group permission number
+        Return the group permission as a string or as an octet number
 
         Args:
             rep (str, optional): representation of the permissions. Defaults to'str'. can be 'oct' or 'str'.
 
         Returns:
-            str: group permission number
+            str: group permissions
         """
         mode =str(self.perms('oct'))
         res = mode[-2]
@@ -163,15 +171,15 @@ class PathPerms(object):
         else:
             return res
 
-    def user(self, rep='str') -> str:
+    def owner_perms(self, rep='str') -> str:
         """
-        Return the user permission number
+        Return the owner permission as a string or as an octet number
 
         Args:
             rep (str, optional): representation of the permissions. Defaults to'str'. can be 'oct' or 'str'.
 
         Returns:
-            str: user permission number
+            str: owner permissions
         """
         mode =str(self.perms('oct'))
         res = mode[-3]
@@ -181,7 +189,7 @@ class PathPerms(object):
         else:
             return res
 
-    def isreadable(self)-> bool:
+    def is_readable(self)-> bool:
         """
         Is the file readable
 
@@ -189,97 +197,82 @@ class PathPerms(object):
             bool: True if the file is readable, False otherwise
         
         """
-        return os.access(self.filepath, os.R_OK)
+        return os.access(self.path, os.R_OK)
     
-    def iswritable(self)-> bool:
+    def is_writable(self)-> bool:
         """
         Is the file writable
 
         Returns:
             bool: True if the file is read write, False otherwise
         """
-        return os.access(self.filepath, os.W_OK)
+        return os.access(self.path, os.W_OK)
 
-    def isexecutable(self)-> bool:
+    def is_executable(self)-> bool:
         """
         Is the file executable
 
         Returns:
             bool: True if the file is executable, False otherwise
         """
-        return os.access(self.filepath, os.X_OK)
+        return os.access(self.path, os.X_OK)
     
-    def isreadonly(self)-> bool:
+    def is_read_only(self)-> bool:
         """
         Is the file readable only
 
         Returns:
             bool: True if the file is readable only, False otherwise
         """
-        readable = self.isreadable()
-        writeable = self.iswritable()
-        executable = self.isexecutable()
+        readable = self.is_readable()
+        writeable = self.is_writable()
+        executable = self.is_executable()
         if readable and not writeable and not executable:
             return True
         else:
             return False
 
-    def isreadwrite(self)-> bool:
+    def is_read_writable(self)-> bool:
         """
         Is the file readable and writeable
 
         Returns:
             bool: True if the file is readble and writeable only, False otherwise
         """
-        readable = self.isreadable()
-        writeable = self.iswritable()
-        executable = self.isexecutable()
+        readable = self.is_readable()
+        writeable = self.is_writable()
+        executable = self.is_executable()
         if (readable and writeable) and not executable:
             return True
         else:
             return False
 
-    def isreadexec(self)-> bool:
+    def is_read_executable(self)-> bool:
         """
         Is the file readable and executable
 
         Returns:
             bool: True if the file is readable and executable only, False otherwise
         """
-        readable = self.isreadable()
-        writeable = self.iswritable()
-        executable = self.isexecutable()
+        readable = self.is_readable()
+        writeable = self.is_writable()
+        executable = self.is_executable()
         if (readable and executable) and not writeable:
             return True
         else:
             return False
 
-    def isreadwriteexec(self)-> bool:
+    def is_full_access(self)-> bool:
         """
         Is the file readable and writeable and executable
 
         Returns:
             bool: True if the file is readable and writeable and executable only, False otherwise
         """
-        readable = self.isreadable()
-        writeable = self.iswritable()
-        executable = self.isexecutable()
+        readable = self.is_readable()
+        writeable = self.is_writable()
+        executable = self.is_executable()
         if readable and writeable and executable:
             return True
         else:
             return False
-
-if __name__ == '__main__':
-    f = PathPerms('/tmp/testfile.txt')
-    print(f.perms())
-    print(f.user())
-    print(f.group())
-    print(f.others())
-    f = PathPerms('/tmp')
-    print(f.perms())
-    print(f.user())
-    print(f.group())
-    print(f.others())
-    print(f.gid)
-    print(f.uid)
-
