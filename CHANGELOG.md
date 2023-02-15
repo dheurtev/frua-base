@@ -8,6 +8,7 @@
 - cmd/cmd : to run command lines and bash/python scripts
 - const/perms: useful path permissions constants 
 - data/filerw : an object for basic read/write operations on a file
+- db/sqlite: an object wrapper around the standard SQLITE3 library with a logger
 - fs/dir : a directory object with a wipe method to remove the tree (while protecting root and system files)
 - fs/groups : get the group name by gid or GID for a group name
 - fs/pathperms: Path permission helpers

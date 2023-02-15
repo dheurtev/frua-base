@@ -8,6 +8,7 @@ frua.base.archive
 frua.base.cmd
 frua.base.const
 frua.base.data
+frua.base.db.sqlite
 frua.base.fs
 frua.base.log
 frua.base.obj
@@ -26,8 +27,6 @@ frua.base.data.binary
 frua.base.data.csv
 frua.base.data.docs
 frua.base.data.text
-frua.base.db
-frua.base.db.sqlite
 frua.base.debug
 frua.base.encoding
 frua.base.env

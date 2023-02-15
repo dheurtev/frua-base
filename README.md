@@ -29,9 +29,12 @@ This library is free to use and reuse (MIT Licensed).
 The base package is *frua.base*:
 
 It contains:
-- *frua.base.archive* : Tools for archiving (zip, tar) 
+- *frua.base.archive* : Tools for archiving (zip, tar)
+- *frua.base.cmd*: Tools for command line execution
+- *frua.base.const*: Some useful constants 
 - *frua.base.data* : Tools for data manipulation (read, write)
-- *frua.base.fs* : Tools for filesystem manipulation
+- *frua.base.db.sqlite*: SQLITE support
+- *frua.base.fs* : Tools for files, directories, users and groups
 - *frua.base.obj* : objects
 - *frua.base.log* : Logging objects and tools
 - *frua.base.time* : Time (datetime) helpers
