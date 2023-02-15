@@ -38,9 +38,3 @@ class Groups(object):
             str: group name
         """
         return grp.getgrgid(gid).gr_name
-
-if __name__ == '__main__':
-    g = Groups()
-    gid = g.gid('root')
-    print(gid)
-    print(g.group(gid))
