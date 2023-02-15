@@ -10,78 +10,7 @@ import logging
 import os
 import requests
 import subprocess
-
-class FileDownloader(object):
-    """
-    File downloader class
-    """
-
-    def __init__(self, logger=None):
-        """
-        Constructor
-
-        Args:
-            path (str): the file path
-            content (list):The content to write in the file as a list of lines
-            logger (logging.Logger): the logger to use (optional)
-        """
-        #setup logger
-        if logger:
-            self._logger = logger
-        else:
-            self._logger = logging.getLogger(__name__)
-
-    def download_web(self, url=None, file_name=None, file_dir='.', overwrite=False):
-        """
-        Download a plugin from the web.
-
-        Args:
-            url (str): the url to download
-            file_name (str): the name of the file to save
-            file_dir (str): the directory to save the file to
-            overwrite (bool): whether to overwrite an existing file
-
-        Returns:
-            bool: True if successful, False otherwise
-
-        """
-        self._logger.info("Downloading from %s" % url)
-        #pick the file name
-        if not file_name:
-            file_name = url.split('/')[-1]
-            file_name = file_name.split('?')[0]
-            file_name = file_name.split('#')[0]
-            file_name = file_name.split('&')[0]
-            file_name = file_name.split('=')[0]
-        # pick and create the directory
-        if not file_dir:
-            file_dir = os.path.dirname(file_name)
-            if not os.path.exists(file_dir):
-                os.makedirs(file_dir)
-                self._logger.info("Created directory %s" % file_dir)
-                self._logger.info("Created file %s" % file_name)
-            else:
-                self._logger.info("Directory %s already exists" % file_dir)
-                self._logger.info("File %s already exists" % file_name)
-        # compute the file path
-        file_path = os.path.join(file_dir, file_name)
-        # download the file
-        if not os.path.exists(file_path) or overwrite:
-            self._logger.info("Downloading url %s. Will be saved to %s" % (url, file_path))
-            r = requests.get(url, stream=True)
-            r.raise_for_status()
-            with open(file_path, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=1024):
-                    if chunk: # filter out keep-alive new chunks
-                        f.write(chunk)
-                    else:
-                        break
-                    self._logger.info("Downloaded %s and saved to %s" % (url, file_path))
-                return True
-        else:
-            self._logger.info("File %s already exists in %s" % (file_name, file_dir))
-            return False
-    
+  
     def download_github_zip(self, userandrepo, branch="master", file_name=None, file_dir='.', overwrite=False):
         """
         Download a zip file from github

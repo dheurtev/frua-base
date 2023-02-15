@@ -15,7 +15,10 @@ class Users(object):
     Users Utility class
     """
     def __init__(self):
-        pass
+        """
+        Constructor
+        """
+        super().__init__()
   
     def uid(self, user:str) -> int:
         """

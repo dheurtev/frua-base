@@ -20,7 +20,7 @@ My goal is to provide a development framework based on the Python standard libra
 
 My aim is to be generic and tested.
 
-**frua-base shall not pull dependencies other than the standard library (except for packaging and documentation). It should not reimplement the standard library.**
+**frua-base shall not pull dependencies other than the standard library (except for packaging and documentation) and a pre-approved list of MIT, BSD, Apache 2.0 based dependencies. It should not reimplement the standard library.**
 
 This library is free to use and reuse (MIT Licensed).
 
@@ -38,6 +38,11 @@ It contains:
 - *frua.base.obj* : objects
 - *frua.base.log* : Logging objects and tools
 - *frua.base.time* : Time (datetime) helpers
+
+# List of dependencies
+
+- [requests](https://requests.readthedocs.io/en/latest/): Requests allows you to send HTTP/1.1 requests extremely easily .
+
 
 ## Usage
 

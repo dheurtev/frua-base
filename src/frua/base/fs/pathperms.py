@@ -30,6 +30,7 @@ class PathPerms(object):
         Args:
             path (str, optional): path (file or directory)
         """
+        
         if path != None:
             self._path = path
         else:

@@ -15,7 +15,10 @@ class Groups(object):
     Groups Utility class
     """
     def __init__(self):
-        pass
+        """
+        Constructor
+        """
+        super().__init__()
 
     def gid(self, group:str) -> int:
         """

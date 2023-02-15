@@ -75,7 +75,7 @@ python3 -m http.server --directory 'docs/_build/html'
 
 ## Code Contributions
 
-**frua.base shall not pull dependencies other than the standard library (except for packaging and documentation). It should not reimplement the standard library.**
+**frua-base shall not pull dependencies other than the standard library (except for packaging and documentation) and a pre-approved list of MIT, BSD, Apache 2.0 based dependencies. It should not reimplement the standard library.**
 
 ### Submit an issue
 
