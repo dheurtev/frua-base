@@ -123,6 +123,6 @@ class Sqlite(object):
             sql (str): a SQL statement
             data (list): a list of tuples
         """
-        if self.conn != None!
+        if self.conn != None:
             self.conn.executemany(sql, data)
 
