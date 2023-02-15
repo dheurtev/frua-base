@@ -16,7 +16,7 @@ class Dir(object):
     """"
     Directory manipulation 
     """
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, path=None, *args, **kwargs) -> None:
         """
         Constructor
 
@@ -31,8 +31,33 @@ class Dir(object):
         #handle logger
         if not hasattr(self, 'logger'):
             self._logger = logging.getLogger(__name__)
+        #handle path
+        if path != None:
+            self._path = path
+        else:
+            self._path = None
 
-    def wipe(self, dir:str, wipe:bool=False) -> None:
+    @property
+    def path(self) -> str:
+        """
+        Returns the path
+
+        Returns:
+            str: path
+        """
+        return self._path
+
+    @path.setter
+    def path(self, path:str) -> None:
+        """
+        Set the path
+
+        Args:
+            path: path
+        """
+        self._path = path
+
+    def wipe(self, dir:str=None, wipe:bool=False) -> None:
         """
         Wipes a directory (equivalent rm -rf dir)
 
@@ -45,6 +70,18 @@ class Dir(object):
             dir: Directory to be nuked
             wipe: wipe the directory (default: False)        
         """
+        #set the path
+        if self.path == None and dir == None:
+            if hasattr(self, '_logger'):
+                self._logger.error("No path to wipe")
+            else:
+                print("No path to wipe")
+            return
+        if dir == None:
+            dir = self._path
+        else:
+            self._path = dir
+        #set the logger
         if hasattr(self, '_logger'):
             self._logger.debug("Starting to wipe dir: %s", dir)
         #refuses to nuke system folders
