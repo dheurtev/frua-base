@@ -61,16 +61,6 @@ class Sqlite(object):
         """
         return self._conn.cursor()
 
-    @cursor.setter
-    def cursor(self, cursor):
-        """
-        Sets the cursor
-
-        Args:
-            cursor: the cursor object
-        """
-        self._cursor = cursor    
-
     def connect(self) -> None:
         """ create a database connection to a SQLite database
         """
