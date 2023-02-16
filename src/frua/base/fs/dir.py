@@ -57,18 +57,18 @@ class Dir(object):
         """
         self._path = path
 
-    def wipe(self, dir:str=None, wipe:bool=False) -> None:
+    def wipe(self, dir:str=None, wipesys:bool=False) -> None:
         """
         Wipes a directory (equivalent rm -rf dir)
 
         By default, it refuses to wipe system folders :
         / /boot /proc /dev /lib /mnt /run /sbin /srv /sys /lost+found
         
-        To wipe, set wipe=True
+        To wipe system directories, set wipesys=True
 
         Args:
             dir: Directory to be nuked
-            wipe: wipe the directory (default: False)        
+            wipesys: wipe the directory (default: False)        
         """
         #set the path
         if self.path == None and dir == None:
@@ -85,7 +85,7 @@ class Dir(object):
         if hasattr(self, '_logger'):
             self._logger.debug("Starting to wipe dir: %s", dir)
         #refuses to nuke system folders
-        if not wipe:
+        if not wipesys:
             if str(dir).strip() in ['/','/boot','/proc','/dev','/lib','/mnt','/run','/sbin','/srv','/sys','/lost+found']:
                 if hasattr(self, '_logger'):
                     self._logger.debug("Refusing to wipe system dir: %s", dir)
@@ -102,7 +102,7 @@ class Dir(object):
                     path = dir + os.sep + file
                     if os.path.isdir(path):
                         #wipe sub-directory
-                        self.wipe(path)
+                        self.wipe(path, wipesys=wipesys)
                         if hasattr(self, '_logger'):
                             self._logger.debug("wiped dir: %s", path)
                     else:

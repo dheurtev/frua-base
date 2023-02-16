@@ -137,18 +137,19 @@ class GetDownloader(object):
             self._logger.error("You must set the url")
             return False
         # Set the filename if not set
-        if not self.file_name:
+        if self.file_name is None:
             file_name = self.url.split('/')[-1]
             file_name = file_name.split('?')[0]
             file_name = file_name.split('#')[0]
             file_name = file_name.split('&')[0]
             file_name = file_name.split('=')[0]
             self.file_name = file_name
-            #case empty file name         
-            domain = urlparse(self._url).netloc
-            self.file_name = domain
+            #case empty file name
+            if self.file_name == '' or self.file_name is None:         
+                domain = urlparse(self._url).netloc
+                self.file_name = domain
         # Set the file_dir
-        if not self.file_dir:
+        if self.file_dir is None:
             self.file_dir = os.path.dirname(os.getcwd())
             if not os.path.exists(self.file_dir):
                 os.makedirs(self.file_dir)

@@ -1,4 +1,3 @@
-git:clone
 git:downloadrepo
 git:downloadrepounzip
 

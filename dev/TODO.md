@@ -6,6 +6,7 @@ frua.base
 ## Existing
 frua.base.archive.*
 frua.base.cmd.cmd
+frua.base.code.git
 frua.base.const.perms
 frua.base.data.filerw
 frua.base.db.sqlite
