@@ -1,6 +1,3 @@
-git:downloadrepo
-git:downloadrepounzip
-
 data:file:top
 data:file:tail
 data:file:appendtop

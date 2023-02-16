@@ -31,6 +31,7 @@ The base package is *frua.base*:
 It contains:
 - *frua.base.archive* : Tools for archiving (zip, tar)
 - *frua.base.cmd*: Tools for command line execution
+- *frua.base.code*: Tools for code deployment (git repository cloning)
 - *frua.base.const*: Some useful constants 
 - *frua.base.data* : Tools for data manipulation (read, write)
 - *frua.base.db.sqlite*: SQLITE support

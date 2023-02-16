@@ -1,7 +1,7 @@
 """
 Git Helper
 
-To clone and deploy repositories
+Tool to clone and deploy git repositories with or without git installed on your machine (clones repos, branches or releases)
 
 Uses:
 - os: https://docs.python.org/3/library/os.html

@@ -6,6 +6,7 @@
 - archive/tar : to tar/untar a folder
 - archive/zip : to zip/unzip a folder
 - cmd/cmd : to run command lines and bash/python scripts
+- code/git : Tool to clone and deploy git repositories with or without git installed on your machine (clones repos, branches or releases)
 - const/perms: useful path permissions constants 
 - data/filerw : an object for basic read/write operations on a file
 - db/sqlite: an object wrapper around the standard SQLITE3 library with a logger
