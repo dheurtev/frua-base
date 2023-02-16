@@ -23,6 +23,11 @@ def test_subfolders(dirobj):
     subs = dirobj.subfolders(path)
     assert len(subs) > 0
 
+def test_files(dirobj):
+    path = '/etc'
+    files = dirobj.files(path)
+    assert len(files) > 0
+
 def test_wipe_with_empty_dir(dirobj):
     #setup
     ##create the test directory

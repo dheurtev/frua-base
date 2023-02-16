@@ -67,8 +67,19 @@ class Dir(object):
             list: list of subfolders
         """
         subdirs = [os.path.join(dir, o) for o in os.listdir(dir) if os.path.isdir(os.path.join(dir,o))]
-        print(subdirs)
         return subdirs
+
+    def files(self, dir:str=None) -> list:
+        """
+        List all files of the directory
+
+        Args:
+            dir: Directory to be listed
+        Returns:
+            list: list of files
+        """
+        files = [os.path.join(dir, o) for o in os.listdir(dir) if os.path.isfile(os.path.join(dir,o))]
+        return files
 
     def wipe(self, dir:str=None, wipesys:bool=False) -> None:
         """
