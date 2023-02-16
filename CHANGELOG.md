@@ -8,7 +8,7 @@
 - cmd/cmd : to run command lines and bash/python scripts
 - code/git : Tool to clone and deploy git repositories with or without git installed on your machine (clones repos, branches or releases)
 - const/perms: useful path permissions constants 
-- data/filerw : an object for basic read/write operations on a file
+- data/file : read, write, head, tail, append to bottom, append to top, merge
 - db/sqlite: an object wrapper around the standard SQLITE3 library with a logger
 - fs/dir : a directory object (subfolders, files, wiping directories)
 - fs/groups : get the group name by gid or GID for a group name

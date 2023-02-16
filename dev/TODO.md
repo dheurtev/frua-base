@@ -8,7 +8,7 @@ frua.base.archive.*
 frua.base.cmd.cmd
 frua.base.code.git
 frua.base.const.perms
-frua.base.data.filerw
+frua.base.data.file
 frua.base.db.sqlite
 frua.base.fs.*
 frua.base.http.getdownloader

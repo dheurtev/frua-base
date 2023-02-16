@@ -33,7 +33,7 @@ It contains:
 - *frua.base.cmd*: Tools for command line execution
 - *frua.base.code*: Tools for code deployment (git repository cloning)
 - *frua.base.const*: Some useful constants 
-- *frua.base.data* : Tools for data manipulation (read, write)
+- *frua.base.data* : Tools for data manipulation (file read, write, head, tail, append to bottom, append to top, merge)
 - *frua.base.db.sqlite*: SQLITE support
 - *frua.base.fs* : Tools for files, directories, users and groups
 - *frua.base.obj* : objects

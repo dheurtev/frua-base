@@ -25,9 +25,6 @@ class Files(object):
         else:
             self._logger = logging.getLogger(__name__)
 
-
-
-
     def copy(self, src, dst):
         """
         Copy a file
