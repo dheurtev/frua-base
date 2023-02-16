@@ -26,11 +26,7 @@ class Files(object):
             self._logger = logging.getLogger(__name__)
 
 
-    def subfolders(self, dir):
-        """
-        List all subfolders of a directory"""
-        subdirs = [os.path.join(dir, o) for o in os.listdir(dir) if os.path.isdir(os.path.join(dir,o))]
-        return subdirs
+
 
     def copy(self, src, dst):
         """

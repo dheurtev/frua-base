@@ -18,6 +18,11 @@ def dirobj():
     obj = Dir()
     return obj
 
+def test_subfolders(dirobj):
+    path = '/tmp'
+    subs = dirobj.subfolders(path)
+    assert len(subs) > 0
+
 def test_wipe_with_empty_dir(dirobj):
     #setup
     ##create the test directory

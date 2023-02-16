@@ -57,6 +57,19 @@ class Dir(object):
         """
         self._path = path
 
+    def subfolders(self, dir:str=None) -> list:
+        """
+        List all subfolders of the directory
+
+        Args:
+            dir: Directory to be listed
+        Returns:
+            list: list of subfolders
+        """
+        subdirs = [os.path.join(dir, o) for o in os.listdir(dir) if os.path.isdir(os.path.join(dir,o))]
+        print(subdirs)
+        return subdirs
+
     def wipe(self, dir:str=None, wipesys:bool=False) -> None:
         """
         Wipes a directory (equivalent rm -rf dir)
