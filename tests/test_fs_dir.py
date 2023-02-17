@@ -11,8 +11,6 @@ import os
 
 from frua.base.fs.dir import Dir
 
-#Test Wipe
-
 @pytest.fixture
 def dirobj():
     obj = Dir()

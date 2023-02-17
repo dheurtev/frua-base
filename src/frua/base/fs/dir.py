@@ -145,7 +145,7 @@ class Dir(object):
 
     def copy(self, dst:str) -> bool:
         """
-        Copy a directory to a destination
+        Copy recursively a directory to a destination
 
         Args:
             dst (str): destination directory
@@ -170,7 +170,7 @@ class Dir(object):
     
     def move(self, dst:str) -> bool:
         """
-        Move a directory  to a destination
+        Move a directory (with its subfolders and files) to a destination
 
         Args:
             dst (str): destination directory

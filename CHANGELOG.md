@@ -10,7 +10,8 @@
 - const/perms: useful path permissions constants 
 - data/file : read, write, head, tail, append to bottom, append to top, merge
 - db/sqlite: an object wrapper around the standard SQLITE3 library with a logger
-- fs/dir : a directory object (subfolders, files, wiping directories)
+- fs/dir : a directory object (list subfolders, list files, wiping directories, move, copy)
+- fs/file: a file object (move, copy)
 - fs/groups : get the group name by gid or GID for a group name
 - fs/pathperms: Path permission helpers
 - fs/users: get the user name by uid or UID for a user name
