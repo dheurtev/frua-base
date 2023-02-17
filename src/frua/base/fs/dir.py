@@ -4,6 +4,7 @@ Directory manipulation with logger
 Uses:
 - os: https://docs.python.org/3/library/os.html
 - logging: https://docs.python.org/3/library/logging.html
+- shutil: https://docs.python.org/3/library/shutil.html
 """
 __author__ = 'David HEURTEVENT'
 __copyright__ = 'David HEURTEVENT'
@@ -11,6 +12,7 @@ __license__ = 'MIT'
 
 import os
 import logging
+import shutil
 
 class Dir(object):
     """"
@@ -96,25 +98,18 @@ class Dir(object):
         """
         #set the path
         if self.path == None and dir == None:
-            if hasattr(self, '_logger'):
-                self._logger.error("No path to wipe")
-            else:
-                print("No path to wipe")
+            self._logger.error("No path to wipe")
             return
         if dir == None:
             dir = self._path
         else:
             self._path = dir
         #set the logger
-        if hasattr(self, '_logger'):
-            self._logger.debug("Starting to wipe dir: %s", dir)
+        self._logger.debug("Starting to wipe dir: %s", dir)
         #refuses to nuke system folders
         if not wipesys:
             if str(dir).strip() in ['/','/boot','/proc','/dev','/lib','/mnt','/run','/sbin','/srv','/sys','/lost+found']:
-                if hasattr(self, '_logger'):
-                    self._logger.debug("Refusing to wipe system dir: %s", dir)
-                else:
-                    print("Refusing to wipe system dir: %s", dir)
+                self._logger.debug("Refusing to wipe system dir: %s", dir)
                 return
         #nuking
         try:
@@ -127,31 +122,73 @@ class Dir(object):
                     if os.path.isdir(path):
                         #wipe sub-directory
                         self.wipe(path, wipesys=wipesys)
-                        if hasattr(self, '_logger'):
-                            self._logger.debug("wiped dir: %s", path)
+                        self._logger.debug("wiped dir: %s", path)
                     else:
                         try:
                             #remove the file
                             os.unlink(path)
-                            if hasattr(self, '_logger'):
-                                self._logger.debug("wiped file: %s", path)
+                            self._logger.debug("wiped file: %s", path)
                         except Exception as e:
-                            if hasattr(self, '_logger'):
-                                self._logger.error("Failed to wipe file: %s", path)
-                                self._logger.error(e)
+                            self._logger.error("Failed to wipe file: %s", path)
+                            self._logger.error(e)
                 try:
                     #remove the directory
                     os.rmdir(dir)
-                except Exception as e:
-                    if hasattr(self, '_logger'):
-                        self._logger.error("Failed to wipe dir: %s", dir)
-                        self._logger.error(e)
-                if hasattr(self, '_logger'):
                     self._logger.debug("removed dir: %s", dir)
+                except Exception as e:
+                    self._logger.error("Failed to wipe dir: %s", dir)
+                    self._logger.error(e)
         except Exception as e:
-            if hasattr(self, '_logger'):
-                self._logger.error("Failed to wipe dir: %s", dir)
-                self._logger.error(e)
-        if hasattr(self, '_logger'):
-            self._logger.info("Done wiping dir: %s", dir)
+            self._logger.error("Failed to wipe dir: %s", dir)
+            self._logger.error(e)
+        self._logger.info("Done wiping dir: %s", dir)
 
+    def copy(self, dst:str) -> bool:
+        """
+        Copy a directory to a destination
+
+        Args:
+            dst (str): destination directory
+
+        Returns:
+            bool: success
+        """
+        if self.path is None:
+            self._logger.error("No path to copy")
+            return False
+        src = self.path
+        self._logger.debug("Starting to copy dir: %s", src)
+        try:
+            #copy the tree
+            shutil.copytree(src, dst)
+            self._logger.debug("Done copying dir: %s to %s"% (src, dst))
+            return True
+        except Exception as e:
+            self._logger.error("Failed to copy dir: %s to %s"% (src, dst))
+            self._logger.error(e)    
+            return False
+    
+    def move(self, dst:str) -> bool:
+        """
+        Move a directory  to a destination
+
+        Args:
+            dst (str): destination directory
+
+        Returns:
+            bool: success
+        """
+        if self.path is None:
+            self._logger.error("No path to move")
+            return False
+        src = self.path
+        self._logger.debug("Starting to move dir: %s", src)
+        try:
+            shutil.move(src, dst)
+            self._logger.debug("Done moving dir: %s", src)
+            self._logger.info("Done moving dir: %s", src)
+            return True
+        except Exception as e:
+            self._logger.error("Failed to move dir: %s to %s"% (src, dst))
+            self._logger.error(e)
+            return False

@@ -87,3 +87,76 @@ def test_wipe_non_existing_dir(dirobj):
     assert not os.path.exists(path)
     assert not os.path.isdir(path)    
 
+def test_copy(dirobj):
+    #setup
+    src = '/tmp/test_copy'
+    dst = '/tmp/test_copy2'
+    #wipe
+    dirobj.wipe(src)
+    dirobj.wipe(dst)
+    #create the dirs
+    if not os.path.exists(src):
+        os.makedirs(src)
+    ##put a test file in the test directory
+    with open(os.path.join(src, 'tmp.txt'), 'w') as file: 
+        pass
+    ##put a subfolder in the test directory
+    os.makedirs(os.path.join(src, 'tmp2'))
+    ##put a test file in the subfolder
+    with open(os.path.join(src, 'tmp2', 'tmp.txt'), 'w') as file: 
+        pass
+    #copy
+    dirobj.path = src
+    outcome = dirobj.copy(dst)
+    #test dst
+    assert outcome
+    assert os.path.exists(dst)
+    assert os.path.isdir(dst)
+    assert os.path.exists(os.path.join(dst, 'tmp2'))
+    assert os.path.isdir(os.path.join(dst, 'tmp2'))
+    assert os.path.exists(os.path.join(dst, 'tmp.txt'))
+    assert os.path.isfile(os.path.join(dst, 'tmp.txt'))
+    assert os.path.exists(os.path.join(dst, 'tmp2', 'tmp.txt'))
+    assert os.path.isfile(os.path.join(dst, 'tmp2', 'tmp.txt'))
+    #test src still exist
+    assert os.path.exists(src)
+    #teardown
+    dirobj.wipe(src)
+    dirobj.wipe(dst)
+
+def test_move(dirobj):
+    #setup
+    src = '/tmp/test_copy'
+    dst = '/tmp/test_copy2'
+    #wipe
+    dirobj.wipe(src)
+    dirobj.wipe(dst)
+    #create the dirs
+    if not os.path.exists(src):
+        os.makedirs(src)
+    ##put a test file in the test directory
+    with open(os.path.join(src, 'tmp.txt'), 'w') as file: 
+        pass
+    ##put a subfolder in the test directory
+    os.makedirs(os.path.join(src, 'tmp2'))
+    ##put a test file in the subfolder
+    with open(os.path.join(src, 'tmp2', 'tmp.txt'), 'w') as file: 
+        pass
+    #move
+    dirobj.path = src
+    outcome = dirobj.move(dst)
+    #test dst
+    assert outcome
+    assert os.path.exists(dst)
+    assert os.path.isdir(dst)
+    assert os.path.exists(os.path.join(dst, 'tmp2'))
+    assert os.path.isdir(os.path.join(dst, 'tmp2'))
+    assert os.path.exists(os.path.join(dst, 'tmp.txt'))
+    assert os.path.isfile(os.path.join(dst, 'tmp.txt'))
+    assert os.path.exists(os.path.join(dst, 'tmp2', 'tmp.txt'))
+    assert os.path.isfile(os.path.join(dst, 'tmp2', 'tmp.txt'))
+    #test src no longer exist
+    assert not os.path.exists(src)
+    #teardown
+    dirobj.wipe(src)
+    dirobj.wipe(dst)
