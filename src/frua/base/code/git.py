@@ -114,6 +114,8 @@ class GitHub(Git):
             self._branch = branch
         if release is not None:
             self._release = release
+        else:
+            self._release = None
     
     @property
     def user(self) -> str:
@@ -244,8 +246,8 @@ class GitHub(Git):
         if self.user is None or self.repo is None:
             self._logger.error("User and repo must be set")
             return False
-        if self.release is None:
-            self._logger.error("Release must be set")
+        if self.branch is None:
+            self._logger.error("Branch must be set")
             return False
         #compute the url
         url = self.repo_branch_zip_url
